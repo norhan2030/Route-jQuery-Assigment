@@ -102,7 +102,7 @@ $('#singer .bttn').on('click',function(){
 // $('.e-m-seconds').html(localStorage.getItem("seconds"));
 
 $(function() {
-    function getCounterData(obj) {
+    function getCounterData() {
       if(localStorage.getItem("days")){
         var days=parseInt(localStorage.getItem("days"));
         var hours =parseInt( localStorage.getItem("hours"));
@@ -111,15 +111,16 @@ $(function() {
         return seconds + (minutes * 60) + (hours * 3600) + (days * 3600 * 24);
       
       }else{
-        var days = parseInt($('.e-m-days', obj).text());
-      var hours = parseInt($('.e-m-hours', obj).text());
-      var minutes = parseInt($('.e-m-minutes', obj).text());
-      var seconds = parseInt($('.e-m-seconds', obj).text());
+        var days = parseInt($('.e-m-days' ).text());
+      var hours = parseInt($('.e-m-hours' ).text());
+      var minutes = parseInt($('.e-m-minutes').text());
+      var seconds = parseInt($('.e-m-seconds').text());
       return seconds + (minutes * 60) + (hours * 3600) + (days * 3600 * 24);
       }
     }
   
-    function setCounterData(s, obj) {
+    function setCounterData(s) {
+      console.log(s)
       var days = parseInt(Math.floor(s / (3600 * 24)));
       var hours = parseInt(Math.floor((s % (60 * 60 * 24)) / (3600)));
       var minutes =parseInt( Math.floor((s % (60 * 60)) / 60));
@@ -132,13 +133,13 @@ $(function() {
       localStorage.setItem("seconds",seconds)
 
   
-      $('.e-m-days', obj).html(localStorage.getItem("days"));
-      $('.e-m-hours', obj).html(localStorage.getItem("hours"));
-      $('.e-m-minutes', obj).html(localStorage.getItem("minutes"));
-      $('.e-m-seconds', obj).html(localStorage.getItem("seconds"));
+      $('.e-m-days').html(localStorage.getItem("days"));
+      $('.e-m-hours').html(localStorage.getItem("hours"));
+      $('.e-m-minutes').html(localStorage.getItem("minutes"));
+      $('.e-m-seconds').html(localStorage.getItem("seconds"));
     }
   
-    var count =parseInt( getCounterData($(".counter")));
+    var count =parseInt( getCounterData());
   console.log(count)
     var timer = setInterval(function() {
       count--;
@@ -146,7 +147,7 @@ $(function() {
         clearInterval(timer);
         return;
       }
-      setCounterData(count, $(".counter"));
+      setCounterData(count);
     }, 1000);
   });
 
