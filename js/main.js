@@ -102,54 +102,54 @@ $('#singer .bttn').on('click',function(){
 // $('.e-m-seconds').html(localStorage.getItem("seconds"));
 
 $(function() {
-    function getCounterData() {
-      if(localStorage.getItem("days")){
-        var days=parseInt(localStorage.getItem("days"));
-        var hours =parseInt( localStorage.getItem("hours"));
-        var minutes = parseInt(localStorage.getItem("minutes"))
-        var seconds = parseInt( localStorage.getItem("seconds"))
-        return seconds + (minutes * 60) + (hours * 3600) + (days * 3600 * 24);
-      
-      }else{
-        var days = parseInt($('.e-m-days' ).text());
-      var hours = parseInt($('.e-m-hours' ).text());
-      var minutes = parseInt($('.e-m-minutes').text());
-      var seconds = parseInt($('.e-m-seconds').text());
+  function getCounterData() {
+    if(localStorage.getItem("days")){
+      var days=Number(localStorage.getItem("days"));
+      var hours =Number( localStorage.getItem("hours"));
+      var minutes = Number(localStorage.getItem("minutes"))
+      var seconds = Number( localStorage.getItem("seconds"))
       return seconds + (minutes * 60) + (hours * 3600) + (days * 3600 * 24);
-      }
+    
+    }else{
+      var days = Number($('.e-m-days' ).text());
+    var hours = Number($('.e-m-hours' ).text());
+    var minutes = Number($('.e-m-minutes').text());
+    var seconds = Number($('.e-m-seconds').text());
+    return seconds + (minutes * 60) + (hours * 3600) + (days * 3600 * 24);
     }
-  
-    function setCounterData(s) {
-      console.log(s)
-      var days = parseInt(Math.floor(s / (3600 * 24)));
-      var hours = parseInt(Math.floor((s % (60 * 60 * 24)) / (3600)));
-      var minutes =parseInt( Math.floor((s % (60 * 60)) / 60));
-      var seconds =parseInt( Math.floor(s % 60));
-  
-      console.log(days, hours, minutes, seconds);
-      localStorage.setItem("days",days)
-      localStorage.setItem("hours",hours)
-      localStorage.setItem("minutes",minutes)
-      localStorage.setItem("seconds",seconds)
+  }
 
+  function setCounterData(s) {
+    console.log(s)
+    var days = Number(Math.floor(s / (3600 * 24)));
+    var hours = Number(Math.floor((s % (60 * 60 * 24)) / (3600)));
+    var minutes =Number( Math.floor((s % (60 * 60)) / 60));
+    var seconds =Number( Math.floor(s % 60));
+
+    console.log(days, hours, minutes, seconds);
+    localStorage.setItem("days",days)
+    localStorage.setItem("hours",hours)
+    localStorage.setItem("minutes",minutes)
+    localStorage.setItem("seconds",seconds)
+
+
+    $('.e-m-days').html(localStorage.getItem("days"));
+    $('.e-m-hours').html(localStorage.getItem("hours"));
+    $('.e-m-minutes').html(localStorage.getItem("minutes"));
+    $('.e-m-seconds').html(localStorage.getItem("seconds"));
+  }
   
-      $('.e-m-days').html(localStorage.getItem("days"));
-      $('.e-m-hours').html(localStorage.getItem("hours"));
-      $('.e-m-minutes').html(localStorage.getItem("minutes"));
-      $('.e-m-seconds').html(localStorage.getItem("seconds"));
-    }
-  
-    var count =parseInt( getCounterData());
+  var count =Number( getCounterData());
   console.log(count)
-    var timer = setInterval(function() {
-      count--;
-      if (count == 0) {
-        clearInterval(timer);
-        return;
-      }
-      setCounterData(count);
-    }, 1000);
-  });
+  var timer = setInterval(function() {
+    count--;
+    if (count == 0) {
+      clearInterval(timer);
+      return;
+    }
+    setCounterData(count);
+  }, 1000);
+});
 
 
 
@@ -242,3 +242,6 @@ $(function(){
     $('body').css({"overflow":"auto"})
   })
 })
+
+
+console.log(typeof NaN)
