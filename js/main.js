@@ -120,10 +120,10 @@ $(function() {
     }
   
     function setCounterData(s, obj) {
-      var days = Math.floor(s / (3600 * 24));
-      var hours = Math.floor((s % (60 * 60 * 24)) / (3600));
-      var minutes = Math.floor((s % (60 * 60)) / 60);
-      var seconds = Math.floor(s % 60);
+      var days = parseInt(Math.floor(s / (3600 * 24)));
+      var hours = parseInt(Math.floor((s % (60 * 60 * 24)) / (3600)));
+      var minutes =parseInt( Math.floor((s % (60 * 60)) / 60));
+      var seconds =parseInt( Math.floor(s % 60));
   
       console.log(days, hours, minutes, seconds);
       localStorage.setItem("days",days)
@@ -138,8 +138,8 @@ $(function() {
       $('.e-m-seconds', obj).html(localStorage.getItem("seconds"));
     }
   
-    var count = getCounterData($(".counter"));
-  
+    var count =parseInt( getCounterData($(".counter")));
+  console.log(count)
     var timer = setInterval(function() {
       count--;
       if (count == 0) {
