@@ -96,10 +96,10 @@ $('#singer .bttn').on('click',function(){
 
 
 // counter of days and seconds and hours and minutes
-$('.e-m-days').html(localStorage.getItem("days"));
-$('.e-m-hours').html(localStorage.getItem("hours"));
-$('.e-m-minutes').html(localStorage.getItem("minutes"));
-$('.e-m-seconds').html(localStorage.getItem("seconds"));
+// $('.e-m-days').html(localStorage.getItem("days"));
+// $('.e-m-hours').html(localStorage.getItem("hours"));
+// $('.e-m-minutes').html(localStorage.getItem("minutes"));
+// $('.e-m-seconds').html(localStorage.getItem("seconds"));
 
 $(function() {
     function getCounterData(obj) {
